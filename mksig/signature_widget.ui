@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>525</width>
-    <height>317</height>
+    <width>579</width>
+    <height>366</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="11" column="2">
+   <item row="13" column="2">
     <widget class="QComboBox" name="comboBox_color">
      <property name="font">
       <font>
@@ -36,7 +36,7 @@
      </property>
     </widget>
    </item>
-   <item row="11" column="5">
+   <item row="13" column="5">
     <widget class="QPushButton" name="pushButton_save">
      <property name="maximumSize">
       <size>
@@ -54,7 +54,7 @@
      </property>
     </widget>
    </item>
-   <item row="11" column="4">
+   <item row="13" column="4">
     <widget class="QPushButton" name="pushButton_create">
      <property name="maximumSize">
       <size>
@@ -72,7 +72,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="2">
+   <item row="4" column="2">
     <widget class="QComboBox" name="comboBox_btm">
      <property name="maximumSize">
       <size>
@@ -90,7 +90,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
+   <item row="4" column="0">
     <widget class="QLabel" name="label_2">
      <property name="maximumSize">
       <size>
@@ -108,7 +108,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="5">
+   <item row="4" column="5">
     <widget class="QCheckBox" name="checkBox_special">
      <property name="font">
       <font>
@@ -120,7 +120,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="4">
+   <item row="4" column="4">
     <widget class="QCheckBox" name="checkBox_double">
      <property name="font">
       <font>
@@ -234,7 +234,7 @@
      </property>
     </widget>
    </item>
-   <item row="11" column="0">
+   <item row="13" column="0">
     <widget class="QLabel" name="label_5">
      <property name="font">
       <font>
@@ -244,6 +244,137 @@
      <property name="text">
       <string>色</string>
      </property>
+    </widget>
+   </item>
+   <item row="14" column="2">
+    <widget class="QFrame" name="frame">
+     <property name="minimumSize">
+      <size>
+       <width>300</width>
+       <height>85</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QSlider" name="horizontalSlider">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>10</y>
+        <width>160</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QSlider" name="horizontalSlider_2">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>30</y>
+        <width>160</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QSlider" name="horizontalSlider_3">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>50</y>
+        <width>160</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_mid_2">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>10</y>
+        <width>50</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>24</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_mid_3">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>30</y>
+        <width>50</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>24</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_mid_4">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>50</y>
+        <width>50</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>24</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>50</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
     </widget>
    </item>
   </layout>

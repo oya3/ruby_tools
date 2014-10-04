@@ -8,7 +8,7 @@ require 'win32/clipboard'
 Encoding.default_external = 'cp932'
 Encoding.default_internal = 'cp932' # これないと文字化け（文字コード表示）になる。
 
-class Signature
+class SignatureStamper
     #クラス定数
     #PI2 = Math::PI*2 # 360度用
     DEFAULT_SIZE = 200

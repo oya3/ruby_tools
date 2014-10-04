@@ -15,5 +15,5 @@ contents:
       values: [ "判子", "太郎", "花子", "一太郎", "因果応報", "阿多福風邪", "亜熱帯高気圧" ]
     - type: QComboBox
       name: comboBox_color
-      values: [ "0xffff0000", "0xffd04040", "0xff000000" ]
+      values: [ "0xffff0000(赤)", "0xffd04040(紅)", "0xff000000(黒)" ]
       

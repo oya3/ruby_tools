@@ -5,7 +5,7 @@ $LOAD_PATH.push(File.expand_path(File.dirname(__FILE__))+'/../common_modules/')
 
 require 'pp'
 require 'optparse' # オプション解析
-require 'signature'
+require 'signature_stamper'
 
 Encoding.default_external = 'cp932'
 Encoding.default_internal = 'cp932' # これないと文字化け（文字コード表示）になる。
@@ -53,7 +53,7 @@ end
 pp $inparam
 
 # ハンコ作成
-signature = Signature.new($inparam)
-signature.export_to_png(options[:outfilepath])
+signatureStamper = SignatureStamper::new($inparam)
+signatureStamper.export_to_png(options[:outfilepath])
 
 puts 'complete.'
