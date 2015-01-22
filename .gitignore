@@ -1,0 +1,11 @@
+#----------------------------------------------------------------------------
+# Ignore these files when commiting to a git repository.
+#----------------------------------------------------------------------------
+
+# emacs backup files
+*~
+
+# Mac finder artifacts
+.DS_Store
+
+

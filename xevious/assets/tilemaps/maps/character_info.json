@@ -1,0 +1,10 @@
+[
+    { "name":"toroid", "type":"A", "x":10, "y":1800 },
+    { "name":"toroid", "type":"A", "x":30, "y":1800 },
+    { "name":"toroid", "type":"A", "x":50, "y":1800 },
+    { "name":"toroid", "type":"A", "x":70, "y":1800 },
+    { "name":"toroid", "type":"A", "x":90, "y":1800 },
+    { "name":"toroid", "type":"A", "x":110, "y":1800 },
+    { "name":"toroid", "type":"A", "x":130, "y":1800 },
+    { "name":"enemy", "type":"A", "x":70, "y":1900 }
+]

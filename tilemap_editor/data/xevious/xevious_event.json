@@ -1,0 +1,13 @@
+{
+    "name": "xevious_event",
+    "data":[
+        {
+            "id": 1,
+            "name": "円盤"
+        },
+        {
+            "id": 2,
+            "name": "板"
+        }
+    ]
+}
