@@ -163,7 +163,7 @@ class CanvasWidget < Qt::Widget
     def delete_event_label(obj_id)
         eventLabelAction = ObjectSpace._id2ref(obj_id.to_i)
         puts "CanvasWidget::delete_event_label #{eventLabelAction.type},#{eventLabelAction.id}"
-        @events.delete(eventLabel.object_id);
+        @events.delete(eventLabelAction.object_id);
 
         # 必要かどうか不明。。。
         # disconnect(eventLabelAction, SIGNAL('delete_event_label(const QString&)'), self, SLOT('delete_event_label(const QString&)'))
