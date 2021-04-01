@@ -2,6 +2,8 @@
 # Ignore these files when commiting to a git repository.
 #----------------------------------------------------------------------------
 
+vendor/
+
 # emacs backup files
 *~
 
