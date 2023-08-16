@@ -3,6 +3,9 @@
 // --- グローバル変数 ---
 var game;
 var main;
+var scaleRatio = 4;
+var gameWidth = 224;
+var gameHeight =360;
 
 // ---------------------------------------------------------------------------------
 // ＮＳゼビウス
@@ -11,7 +14,7 @@ NsXevious = function() {
     this.game;
     // Jsonファイルを読み込み
     $.getJSON( "assets/tilemaps/maps/xevious.json", { width: 800, height:600 }, game_start );
-}
+};
 
 NsXevious.prototype.preload = function() {
     // マップ情報
@@ -39,8 +42,7 @@ NsXevious.prototype.preload = function() {
     this.game.input.gamepad.start();
     // 上下左右の方法キー
     //this.cursors = this.game.input.keyboard.createCursorKeys();
-
-}
+};
 
 NsXevious.prototype.create = function() {
     // マップを生成
@@ -74,6 +76,17 @@ NsXevious.prototype.create = function() {
         enemy = new EnemyDash( this.game, this.game.world.width/2 - 100 + Math.random() * 200 - 8, this.game.world.height - 400 - (Math.random() * 100), 'toroid', this.player )
         this.charactermanager.addother( enemy )
     }
+    // キャンバス要素を取得
+    var canvas = this.game.canvas;
+    // キャンバスのスケーリング
+    canvas.style.width = gameWidth * scaleRatio + 'px';
+    canvas.style.height = gameHeight * scaleRatio + 'px';
+    // レンダリング時のスケーリング
+    this.game.scale.scaleMode = Phaser.ScaleManager.RESIZE;
+    this.game.scale.setResizeCallback(function () {
+      var scale = Math.min(window.innerWidth / gameWidth, window.innerHeight / gameHeight);
+      this.game.scale.setUserScale(scale, scale);
+    }, this);
 }
 
 NsXevious.prototype.update = function() {
@@ -115,19 +128,19 @@ function collision_detection( a, b ) {
 
 // ---------------------------------------------------------------------------------
 function game_start( initdata ) {
-    // ゲーム本体を生成する
-    // サイズはinitdataから取得
-    var width = initdata.width * initdata.tilewidth;
-    var height = initdata.height * initdata.tileheight;
-    width = 600;
-    height = 360;
-    main.game = new Phaser.Game(
-        width,
-        height,
-        Phaser.CANVAS,
-        'ns-xevious',
-        main
-    );
+  // ゲーム本体を生成する
+  // サイズはinitdataから取得
+  var width = initdata.width * initdata.tilewidth;
+  var height = initdata.height * initdata.tileheight;
+  width = 600;
+  height = 360;
+  main.game = new Phaser.Game(
+    gameWidth,
+    gameHeight,
+    Phaser.CANVAS,
+    'ns-xevious',
+    main
+  );
 }
 
 // ---------------------------------------------------------------------------------
