@@ -3,7 +3,6 @@
 // --- グローバル変数 ---
 var game;
 var main;
-var scaleRatio = 4;
 var gameWidth = 224;
 var gameHeight =360;
 
@@ -57,37 +56,47 @@ NsXevious.prototype.create = function() {
     this.eventmanager.setCharacter( this.charactermanager, characterinfo );
 
     // 無理くり自機を登録
-    this.player = new Player( this.game, this.game.world.width/2, this.game.world.height - 16, 'player' )
-    this.charactermanager.addother( this.player )
+    this.player = new Player( this.game, this.game.world.width/2, this.game.world.height - 16, 'player' );
+    this.charactermanager.addother( this.player );
     
     // 無理くり敵を登録
     // 追跡
     for(i=0;i<2000;i++){
-        enemyman = new Enemyman( this.game, this.game.world.width/2 - 100 + Math.random() * 200 - 8, this.game.world.height - 200, 'toroid', this.player )
-        this.charactermanager.addother( enemyman )
+        enemyman = new Enemyman( this.game, this.game.world.width/2 - 100 + Math.random() * 200 - 8, this.game.world.height - 200, 'toroid', this.player );
+        this.charactermanager.addother( enemyman );
     }
     // サインカーブ
     for(i=0;i<100;i++){
-        enemy = new EnemySinWave( this.game, this.game.world.width/2 - 100 + Math.random() * 200 - 8, this.game.world.height - 400 - (Math.random() * 100), 'toroid')
-        this.charactermanager.addother( enemy )
+        enemy = new EnemySinWave( this.game, this.game.world.width/2 - 100 + Math.random() * 200 - 8, this.game.world.height - 400 - (Math.random() * 100), 'toroid');
+        this.charactermanager.addother( enemy );
     }
     // ダッシュ
     for(i=0;i<300;i++){
-        enemy = new EnemyDash( this.game, this.game.world.width/2 - 100 + Math.random() * 200 - 8, this.game.world.height - 400 - (Math.random() * 100), 'toroid', this.player )
-        this.charactermanager.addother( enemy )
+        enemy = new EnemyDash( this.game, this.game.world.width/2 - 100 + Math.random() * 200 - 8, this.game.world.height - 400 - (Math.random() * 100), 'toroid', this.player );
+        this.charactermanager.addother( enemy );
     }
-    // キャンバス要素を取得
-    var canvas = this.game.canvas;
-    // キャンバスのスケーリング
-    canvas.style.width = gameWidth * scaleRatio + 'px';
-    canvas.style.height = gameHeight * scaleRatio + 'px';
-    // レンダリング時のスケーリング
-    this.game.scale.scaleMode = Phaser.ScaleManager.RESIZE;
-    this.game.scale.setResizeCallback(function () {
-      var scale = Math.min(window.innerWidth / gameWidth, window.innerHeight / gameHeight);
-      this.game.scale.setUserScale(scale, scale);
-    }, this);
-}
+    // // キャンバス要素を取得
+    // var canvas = this.game.canvas;
+    // // キャンバスのスケーリング
+    // canvas.style.width = gameWidth * scaleRatio + 'px';
+    // canvas.style.height = gameHeight * scaleRatio + 'px';
+    // // レンダリング時のスケーリング
+    // this.game.scale.scaleMode = Phaser.ScaleManager.RESIZE;
+    // this.game.scale.setResizeCallback(function () {
+    //   var scale = Math.min(window.innerWidth / gameWidth, window.innerHeight / gameHeight);
+    //   this.game.scale.setUserScale(scale, scale);
+    // }, this);
+    this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+    this.game.scale.setResizeCallback(this.gameResized, this);
+    this.game.scale.refresh();
+    // this.gameResized(); // 初回のリサイズ処理を呼び出す <-- これできない。。。refresh()で対応しておく
+};
+
+NsXevious.prototype.gameResized = function() {
+  var scaleRatio = Math.min(window.innerWidth / gameWidth, window.innerHeight / gameHeight);
+  this.game.scale.setUserScale(scaleRatio, scaleRatio);
+  this.game.canvas.style.marginTop = (window.innerHeight - this.game.height * scaleRatio) / 2 + 'px';
+};
 
 NsXevious.prototype.update = function() {
     // マップを更新
@@ -96,7 +105,7 @@ NsXevious.prototype.update = function() {
     this.eventmanager.update();
     // キャラクターを更新
     this.charactermanager.update();
-}
+};
 
 NsXevious.prototype.render = function() {
     // デバッグ用
@@ -104,7 +113,7 @@ NsXevious.prototype.render = function() {
     this.game.debug.cameraInfo( this.game.camera, 240, 280 );
     // gemapad
     this.game.debug.text( this.game.input.gamepad.pad1.connected, 240, 100 );
-}
+};
 
 // ---------------------------------------------------------------------------------
 // 矩形の衝突判定
