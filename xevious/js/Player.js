@@ -2,6 +2,7 @@
 
 // player class
 Player = function( main, wx, wy, name ) {
+    var main = main;
     var game = main.game;
     // コンストラクタ
     this.x = wx;
@@ -14,15 +15,15 @@ Player = function( main, wx, wy, name ) {
     this.speed_y = 0; // y スピード
     this.accel = 0.20; // 加速
     this.decel = 0.05; // 減速
-}
+};
 
 Player.prototype.update = function() {
     this.state = this.state.update(this);
-}
+};
 
 Player.prototype.kill = function() {
     this.obj.kill();
-}
+};
 
 // my.game.input.gamepad.supported;
 // my.game.input.gamepad.active;
@@ -82,7 +83,7 @@ var Normal = ( function(){
                     my.speed_y -= my.accel;
                 }
                 else if (key.isDown(Phaser.Keyboard.DOWN) ) {
-                    my.speed_y += my.accel
+                    my.speed_y += my.accel;
                 }
 
                 // game pad
@@ -126,8 +127,8 @@ var Normal = ( function(){
                 my.obj.y = Math.floor(my.y);
                 return my.state;
             }
-        }
-    };  
+        };
+    }
     return {
         getInstance: function() {
             if (!instance) {

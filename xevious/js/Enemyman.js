@@ -8,7 +8,7 @@ Enemyman = function( main, wx, wy, name, target ) {
     main.group4.add(this.obj);
     this.obj.animations.add('run');
     this.obj.animations.play('run', 10 + Math.random() * 10, true);
-    this.target = target
+    this.target = target;
     this.x = wx;
     this.y = wy;
     this.radian = 0; // 今の向き
@@ -17,15 +17,15 @@ Enemyman = function( main, wx, wy, name, target ) {
     this.radian = Math.atan2((this.target.y - this.y), (this.target.x - this.x)); // 初回の向き
     this.radian_speed = Math.random() / 10;
     this.state = Sleeping.getInstance( this.obj );
-}
+};
 
 Enemyman.prototype.update = function() {
     this.state = this.state.update(this);
-}
+};
 
 Enemyman.prototype.kill = function() {
     this.obj.kill();
-}
+};
 
 
 var Sleeping = ( function(){
@@ -40,8 +40,8 @@ var Sleeping = ( function(){
                 }
                 my.x += Math.cos(my.radian) * my.accel;
                 my.y += Math.sin(my.radian) * my.accel;
-                my.obj.x = Math.floor(my.x)
-                my.obj.y = Math.floor(my.y)
+                my.obj.x = Math.floor(my.x);
+                my.obj.y = Math.floor(my.y);
 
                 my.time -= 1;
                 if( my.time == 0 ) {
@@ -50,8 +50,8 @@ var Sleeping = ( function(){
                 }
                 return my.state;
             }
-        }
-    };  
+        };
+    }
     return {
         getInstance: function() {
             if (!instance) {
@@ -86,8 +86,8 @@ var Tracking = ( function(){
                 }
                 my.x += Math.cos(my.radian) * my.accel;
                 my.y += Math.sin(my.radian) * my.accel;
-                my.obj.x = Math.floor(my.x)
-                my.obj.y = Math.floor(my.y)
+                my.obj.x = Math.floor(my.x);
+                my.obj.y = Math.floor(my.y);
                 
                 my.time -= 1;
                 if( my.time == 0 ) {
@@ -96,8 +96,8 @@ var Tracking = ( function(){
                 }
                 return my.state;
             }
-        }
-    };  
+        };
+    }
     return {
         getInstance: function() {
             if (!instance) {

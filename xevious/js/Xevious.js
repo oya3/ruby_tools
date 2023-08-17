@@ -10,6 +10,7 @@ var gameHeight =360;
 // ＮＳゼビウス
 NsXevious = function() {
     // コンストラクタ
+    this.touch = { x: 0, y: 0, sx: 0, sy: 0 };
     this.group1;
     this.group2;
     this.group3;
@@ -45,6 +46,12 @@ NsXevious.prototype.preload = function() {
     this.game.input.gamepad.start();
     // 上下左右の方法キー
     //this.cursors = this.game.input.keyboard.createCursorKeys();
+
+    // タッチイベントのリスン
+    // this.game.input.addPointer();
+    this.game.input.onDown.add(this.onTouchStart, this);
+    this.game.input.addMoveCallback(this.onTouchMove, this);
+    this.game.input.onUp.add(this.onTouchEnd, this);
 };
 
 NsXevious.prototype.create = function() {
@@ -129,6 +136,27 @@ NsXevious.prototype.render = function() {
     this.game.debug.cameraInfo( this.game.camera, 240, 280 );
     // gemapad
     this.game.debug.text( this.game.input.gamepad.pad1.connected, 240, 100 );
+};
+
+NsXevious.prototype.onTouchStart = function(pointer) {
+  // タッチ開始時の処理
+  // console.log("onTouchStart {}",pointer);
+  this.touch.is_start = true;
+  this.touch.sx = pointer.position.x;
+  this.touch.sy = pointer.position.y;
+  // this.touch.sx = y;
+};
+NsXevious.prototype.onTouchMove = function(pointer, x, y) {
+  // タッチ移動時の処理
+  if(this.touch.is_start === false){
+    return;
+  }
+  console.log("onTouchMove %d/%d", x,y);
+};
+NsXevious.prototype.onTouchEnd = function(pointer) {
+  // タッチ終了時の処理
+  // console.log("onTouchEnd");
+  this.touch.is_start = false;
 };
 
 // ---------------------------------------------------------------------------------
