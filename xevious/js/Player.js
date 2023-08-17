@@ -14,8 +14,9 @@ Player = function( main, wx, wy, name ) {
     this.game = game;
     this.speed_x = 0; // x スピード
     this.speed_y = 0; // y スピード
-    this.accel = 0.20; // 加速
-    this.decel = 0.05; // 減速
+    this.speed_max = 3;
+    this.accel = 0.75; // 加速
+    this.decel = 0.35; // 減速
 };
 
 Player.prototype.update = function() {
@@ -73,15 +74,27 @@ var Normal = ( function(){
                 key = my.main.touch.pad
                 if (key & 0x01) {
                     my.speed_x -= my.accel;
+                    if(my.speed_x < (-my.speed_max)){
+                        my.speed_x = (-my.speed_max);
+                    }
                 }
                 else if (key & 0x02) {
                     my.speed_x += my.accel;
+                    if(my.speed_x > my.speed_max){
+                        my.speed_x = my.speed_max;
+                    }
                 }
                 if (key & 0x10 ) {
                     my.speed_y -= my.accel;
+                    if(my.speed_y < (-my.speed_max)){
+                        my.speed_y = (-my.speed_max);
+                    }
                 }
                 else if (key & 0x20 ) {
                     my.speed_y += my.accel;
+                    if(my.speed_y > my.speed_max){
+                        my.speed_y = my.speed_max;
+                    }
                 }
 
                 // game pad
