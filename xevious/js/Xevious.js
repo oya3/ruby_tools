@@ -77,17 +77,17 @@ NsXevious.prototype.create = function() {
     
     // 無理くり敵を登録
     // 追跡
-    for(i=0;i<2000;i++){
+    for(i=0;i<50;i++){
         enemyman = new Enemyman( this, this.game.world.width/2 - 100 + Math.random() * 200 - 8, this.game.world.height - 200, 'toroid', this.player );
         this.charactermanager.addother( enemyman );
     }
     // サインカーブ
-    for(i=0;i<100;i++){
+    for(i=0;i<50;i++){
         enemy = new EnemySinWave( this, this.game.world.width/2 - 100 + Math.random() * 200 - 8, this.game.world.height - 400 - (Math.random() * 100), 'toroid');
         this.charactermanager.addother( enemy );
     }
     // ダッシュ
-    for(i=0;i<300;i++){
+    for(i=0;i<50;i++){
         enemy = new EnemyDash( this, this.game.world.width/2 - 100 + Math.random() * 200 - 8, this.game.world.height - 400 - (Math.random() * 100), 'toroid', this.player );
         this.charactermanager.addother( enemy );
     }
