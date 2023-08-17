@@ -1,9 +1,11 @@
 // -*- coding: utf-8 -*-
 
-// 敵クラス
-EnemySinWave = function( game, wx, wy, name ) {
+// 敵クラス(サインカーブの揺れでくる敵)
+EnemySinWave = function( main, wx, wy, name ) {
+    var game = main.game;
     // コンストラクタ
     this.obj = game.add.sprite( wx, wx, name);
+    main.group4.add(this.obj);
     this.obj.animations.add('run');
     this.obj.animations.play('run', 15, true);
     this.state = SinWave.getInstance( this.obj );

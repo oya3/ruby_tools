@@ -1,9 +1,11 @@
 // -*- coding: utf-8 -*-
 
-// 敵クラス
-EnemyDash = function( game, wx, wy, name, target ) {
+// 敵クラス(突っ込んでくる敵)
+EnemyDash = function( main, wx, wy, name, target ) {
+    var game = main.game;
     // コンストラクタ
     this.obj = game.add.sprite( wx, wx, name);
+    main.group4.add(this.obj);
     this.obj.animations.add('run');
     this.obj.animations.play('run', 15, true);
     this.state = Searching.getInstance( this );

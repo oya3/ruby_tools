@@ -6,5 +6,11 @@
     { "name":"toroid", "type":"A", "x":90, "y":1800 },
     { "name":"toroid", "type":"A", "x":110, "y":1800 },
     { "name":"toroid", "type":"A", "x":130, "y":1800 },
-    { "name":"enemy", "type":"A", "x":70, "y":1900 }
+    { "name":"enemy", "type":"A", "x":70, "y":1900 },
+    { "name":"enemy", "type":"A", "x":80, "y":1910 },
+    { "name":"enemy", "type":"A", "x":90, "y":1920 },
+    { "name":"enemy", "type":"A", "x":100, "y":1930 },
+    { "name":"enemy", "type":"A", "x":110, "y":1940 },
+    { "name":"enemy", "type":"A", "x":120, "y":1950 },
+    { "name":"enemy", "type":"A", "x":130, "y":1960 }
 ]

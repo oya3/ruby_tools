@@ -1,11 +1,13 @@
 // -*- coding: utf-8 -*-
 
 // player class
-Player = function( game, wx, wy, name ) {
+Player = function( main, wx, wy, name ) {
+    var game = main.game;
     // コンストラクタ
     this.x = wx;
     this.y = wy;
     this.obj = game.add.sprite( wx, wy, name);
+    main.group3.add(this.obj);
     this.state = Normal.getInstance( this.obj );
     this.game = game;
     this.speed_x = 0; // x スピード

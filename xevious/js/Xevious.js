@@ -10,6 +10,10 @@ var gameHeight =360;
 // ＮＳゼビウス
 NsXevious = function() {
     // コンストラクタ
+    this.group1;
+    this.group2;
+    this.group3;
+    this.group4;
     this.game;
     // Jsonファイルを読み込み
     $.getJSON( "assets/tilemaps/maps/xevious.json", { width: 800, height:600 }, game_start );
@@ -47,32 +51,44 @@ NsXevious.prototype.create = function() {
     // マップを生成
     // this.map = new SuperMarioMap( this.game );
     this.map = new XeviousMap( this.game );
+
+    // 表示優先グループを作成
+    this.group1 = new Phaser.Group(this.game); // 地上
+    this.group2 = new Phaser.Group(this.game); // 低空
+    this.group3 = new Phaser.Group(this.game); // player
+    this.group4 = new Phaser.Group(this.game); // 高空
+
+    this.game.world.bringToTop(this.group1);
+    this.game.world.bringToTop(this.group2);
+    this.game.world.bringToTop(this.group3);
+    this.game.world.bringToTop(this.group4);
+
     
     // イベントマネージャを生成
     this.eventmanager = new EventManager( this.game );
     // キャラクター情報をセット
-    this.charactermanager = new CharacterManager( this.game );
+    this.charactermanager = new CharacterManager( this );
     var characterinfo = this.game.cache.getJSON('character_info');
     this.eventmanager.setCharacter( this.charactermanager, characterinfo );
 
     // 無理くり自機を登録
-    this.player = new Player( this.game, this.game.world.width/2, this.game.world.height - 16, 'player' );
+    this.player = new Player( this, this.game.world.width/2, this.game.world.height - 16, 'player' );
     this.charactermanager.addother( this.player );
     
     // 無理くり敵を登録
     // 追跡
     for(i=0;i<2000;i++){
-        enemyman = new Enemyman( this.game, this.game.world.width/2 - 100 + Math.random() * 200 - 8, this.game.world.height - 200, 'toroid', this.player );
+        enemyman = new Enemyman( this, this.game.world.width/2 - 100 + Math.random() * 200 - 8, this.game.world.height - 200, 'toroid', this.player );
         this.charactermanager.addother( enemyman );
     }
     // サインカーブ
     for(i=0;i<100;i++){
-        enemy = new EnemySinWave( this.game, this.game.world.width/2 - 100 + Math.random() * 200 - 8, this.game.world.height - 400 - (Math.random() * 100), 'toroid');
+        enemy = new EnemySinWave( this, this.game.world.width/2 - 100 + Math.random() * 200 - 8, this.game.world.height - 400 - (Math.random() * 100), 'toroid');
         this.charactermanager.addother( enemy );
     }
     // ダッシュ
     for(i=0;i<300;i++){
-        enemy = new EnemyDash( this.game, this.game.world.width/2 - 100 + Math.random() * 200 - 8, this.game.world.height - 400 - (Math.random() * 100), 'toroid', this.player );
+        enemy = new EnemyDash( this, this.game.world.width/2 - 100 + Math.random() * 200 - 8, this.game.world.height - 400 - (Math.random() * 100), 'toroid', this.player );
         this.charactermanager.addother( enemy );
     }
     // // キャンバス要素を取得

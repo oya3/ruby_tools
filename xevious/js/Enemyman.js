@@ -1,9 +1,11 @@
 // -*- coding: utf-8 -*-
 
 // 敵クラス
-Enemyman = function( game, wx, wy, name, target ) {
+Enemyman = function( main, wx, wy, name, target ) {
+    var game = main.game;
     // コンストラクタ
     this.obj = game.add.sprite( wx, wy, name );
+    main.group4.add(this.obj);
     this.obj.animations.add('run');
     this.obj.animations.play('run', 10 + Math.random() * 10, true);
     this.target = target

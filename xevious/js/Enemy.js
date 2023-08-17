@@ -1,21 +1,23 @@
 // -*- coding: utf-8 -*-
 
-// 敵クラス
-Enemy = function( game, tableinfo ) {
+// 敵クラス(地上を歩く)
+Enemy = function( main, tableinfo ) {
+    var game = main.game;
     // コンストラクタ
-    this.enemy = game.add.sprite( tableinfo.x, tableinfo.y, tableinfo.name );
-    this.enemy.animations.add('run');
-    this.enemy.animations.play('run', 15, true);
-    this.state = MoveLeft.getInstance( this.enemy );
-}
+    this.obj = game.add.sprite( tableinfo.x, tableinfo.y, tableinfo.name );
+    main.group1.add(this.obj);
+    this.obj.animations.add('run');
+    this.obj.animations.play('run', 15, true);
+    this.state = MoveLeft.getInstance( this.obj );
+};
 
 Enemy.prototype.update = function() {
-    this.state = this.state.update(this.enemy);
-}
+    this.state = this.state.update(this.obj);
+};
 
 Enemy.prototype.kill = function() {
-    this.enemy.kill();
-}
+    this.obj.kill();
+};
 
 var MoveLeft = ( function(){
     var instance;
