@@ -144,19 +144,42 @@ NsXevious.prototype.onTouchStart = function(pointer) {
   this.touch.is_start = true;
   this.touch.sx = pointer.position.x;
   this.touch.sy = pointer.position.y;
+  this.touch.pad = 0;
   // this.touch.sx = y;
 };
+
+NsXevious.prototype.abs = function(val) {
+  return val < 0 ? -val : val;
+};
+
 NsXevious.prototype.onTouchMove = function(pointer, x, y) {
   // タッチ移動時の処理
   if(this.touch.is_start === false){
     return;
   }
-  console.log("onTouchMove %d/%d", x,y);
+  this.touch.pad = 0;
+  var sub_x = x - this.touch.sx;
+  var sub_y = y - this.touch.sy;
+  if(this.abs(sub_x) > 10){
+    if(sub_x < 0){
+      this.touch.pad |= 0x01;
+    }else{
+      this.touch.pad |= 0x02;
+    }
+  }
+  if(this.abs(sub_y) > 10){
+    if(sub_y < 0){
+      this.touch.pad |= 0x10;
+    }else{
+      this.touch.pad |= 0x20;
+    }
+  }
 };
 NsXevious.prototype.onTouchEnd = function(pointer) {
   // タッチ終了時の処理
   // console.log("onTouchEnd");
   this.touch.is_start = false;
+  this.touch.pad = 0;
 };
 
 // ---------------------------------------------------------------------------------

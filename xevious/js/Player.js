@@ -10,6 +10,7 @@ Player = function( main, wx, wy, name ) {
     this.obj = game.add.sprite( wx, wy, name);
     main.group3.add(this.obj);
     this.state = Normal.getInstance( this.obj );
+    this.main = main
     this.game = game;
     this.speed_x = 0; // x スピード
     this.speed_y = 0; // y スピード
@@ -24,24 +25,6 @@ Player.prototype.update = function() {
 Player.prototype.kill = function() {
     this.obj.kill();
 };
-
-// my.game.input.gamepad.supported;
-// my.game.input.gamepad.active;
-// pad.connected
-// pad._axes[0]);
-// pad._rawPad.axes[0]);
-// if ( pad.isDown(Phaser.Gamepad.XBOX360_DPAD_LEFT) || pad.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1 ) {
-//     my.obj.x -= my.obj.speed;
-// }
-// else if( pad.isDown(Phaser.Gamepad.XBOX360_DPAD_RIGHT) ){
-//     my.obj.x += my.obj.speed;
-// }
-// if ( pad.isDown(Phaser.Gamepad.XBOX360_DPAD_UP) ){
-//     my.obj.y -= my.obj.speed;
-// }
-// else if (pad.isDown(Phaser.Gamepad.XBOX360_DPAD_DOWN) ){
-//     my.obj.y += my.obj.speed;
-// }
 
 var Normal = ( function(){
     var instance;
@@ -72,6 +55,7 @@ var Normal = ( function(){
                     if( my.speed_y < 0 ) my.speed_y = 0;
                 }
                 
+                // keyboard
                 key = my.game.input.keyboard;
                 if (key.isDown(Phaser.Keyboard.LEFT) ) {
                     my.speed_x -= my.accel;
@@ -83,6 +67,20 @@ var Normal = ( function(){
                     my.speed_y -= my.accel;
                 }
                 else if (key.isDown(Phaser.Keyboard.DOWN) ) {
+                    my.speed_y += my.accel;
+                }
+                // touch
+                key = my.main.touch.pad
+                if (key & 0x01) {
+                    my.speed_x -= my.accel;
+                }
+                else if (key & 0x02) {
+                    my.speed_x += my.accel;
+                }
+                if (key & 0x10 ) {
+                    my.speed_y -= my.accel;
+                }
+                else if (key & 0x20 ) {
                     my.speed_y += my.accel;
                 }
 
@@ -122,6 +120,19 @@ var Normal = ( function(){
                 // 進む
                 my.x += my.speed_x;
                 my.y += my.speed_y;
+                var camera = my.game.camera
+                if(my.x < camera.x){
+                    my.x = camera.x
+                }
+                if((camera.x + camera.width - 16) < my.x){
+                    my.x = (camera.x + camera.width - 16);
+                }
+                if(my.y < camera.y){
+                    my.y = camera.y
+                }
+                if((camera.y + camera.height - 16) < my.y){
+                    my.y = (camera.y + camera.height - 16);
+                }
                 // オブジェクトに反映
                 my.obj.x = Math.floor(my.x);
                 my.obj.y = Math.floor(my.y);
