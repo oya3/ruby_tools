@@ -13,6 +13,7 @@ CharacterManager = function( main ) {
 
 CharacterManager.prototype.add = function( tableinfo ) {
     // ここをファクトリーで生成するようにしたい！！
+    // TODO: スプライト単位に当たり判定を実施するので、characters[] を返すようにするべき
     var character = this.characterfactory.create( tableinfo );
     this.characters.push( character );
 };

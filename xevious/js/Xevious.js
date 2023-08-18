@@ -98,17 +98,8 @@ NsXevious.prototype.create = function() {
         enemy = new EnemyDash( this, this.game.world.width/2 - 100 + Math.random() * 200 - 8, this.game.world.height - 400 - (Math.random() * 100), 'toroid', this.player );
         this.charactermanager.addother( enemy );
     }
-    // // キャンバス要素を取得
-    // var canvas = this.game.canvas;
-    // // キャンバスのスケーリング
-    // canvas.style.width = gameWidth * scaleRatio + 'px';
-    // canvas.style.height = gameHeight * scaleRatio + 'px';
-    // // レンダリング時のスケーリング
-    // this.game.scale.scaleMode = Phaser.ScaleManager.RESIZE;
-    // this.game.scale.setResizeCallback(function () {
-    //   var scale = Math.min(window.innerWidth / gameWidth, window.innerHeight / gameHeight);
-    //   this.game.scale.setUserScale(scale, scale);
-    // }, this);
+
+    // レンダリング時のスケーリング
     this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     this.game.scale.setResizeCallback(this.gameResized, this);
     this.game.scale.refresh();

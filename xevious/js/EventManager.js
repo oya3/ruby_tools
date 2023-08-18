@@ -4,20 +4,20 @@
 EventManager = function( game ) {
     // ゲーム本体
     this.game = game;
-}
+};
 
 EventManager.prototype.setCharacter = function( manager, table ) {
     // キャラクター情報をセット
     this.charactermanager = manager
     this.charactertable = table
-}
+};
 
 EventManager.prototype.update = function() {
     // キャラクター情報のチェック
     if ( typeof this.charactermanager !== 'undefined' ) {
         this.checkCharacter();
     }
-}
+};
 
 EventManager.prototype.checkCharacter = function() {
     // テーブルがなければチェックしない
@@ -34,7 +34,7 @@ EventManager.prototype.checkCharacter = function() {
             this.charactertable.splice( i, 1 );
         }
     }
-}
+};
 
 // 画面範囲内かどうかの判定
 EventManager.prototype.is_execute = function( tableinfo ) {
@@ -53,4 +53,4 @@ EventManager.prototype.is_execute = function( tableinfo ) {
         return true;
     }
     return false;
-}
+};

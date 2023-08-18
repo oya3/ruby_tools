@@ -1,16 +1,27 @@
 [
-    { "name":"toroid", "type":"A", "x":10, "y":1800 },
-    { "name":"toroid", "type":"A", "x":30, "y":1800 },
-    { "name":"toroid", "type":"A", "x":50, "y":1800 },
-    { "name":"toroid", "type":"A", "x":70, "y":1800 },
-    { "name":"toroid", "type":"A", "x":90, "y":1800 },
-    { "name":"toroid", "type":"A", "x":110, "y":1800 },
-    { "name":"toroid", "type":"A", "x":130, "y":1800 },
-    { "name":"enemy", "type":"A", "x":70, "y":1900 },
-    { "name":"enemy", "type":"A", "x":80, "y":1910 },
-    { "name":"enemy", "type":"A", "x":90, "y":1920 },
-    { "name":"enemy", "type":"A", "x":100, "y":1930 },
-    { "name":"enemy", "type":"A", "x":110, "y":1940 },
-    { "name":"enemy", "type":"A", "x":120, "y":1950 },
-    { "name":"enemy", "type":"A", "x":130, "y":1960 }
+    { "name":"enemy", "type":"A", "x":70, "y":1600 },
+    { "name":"enemy", "type":"A", "x":80, "y":1610 },
+    { "name":"enemy", "type":"A", "x":90, "y":1620 },
+    { "name":"enemy", "type":"A", "x":100, "y":1630 },
+    { "name":"enemy", "type":"A", "x":110, "y":1640 },
+    { "name":"enemy", "type":"A", "x":120, "y":1650 },
+    { "name":"enemy", "type":"A", "x":130, "y":1660 },
+
+    { "name":"toroid", "type":"A", "x":10, "y":1500 },
+    { "name":"toroid", "type":"A", "x":30, "y":1510 },
+    { "name":"toroid", "type":"A", "x":50, "y":1520 },
+    { "name":"toroid", "type":"A", "x":70, "y":1530 },
+    { "name":"toroid", "type":"A", "x":90, "y":1540 },
+    { "name":"toroid", "type":"A", "x":110, "y":1550 },
+    { "name":"toroid", "type":"A", "x":130, "y":1560 },
+
+    { "name":"toroid", "type":"A", "x":10, "y":1400 },
+    { "name":"toroid", "type":"A", "x":30, "y":1410 },
+    { "name":"toroid", "type":"A", "x":50, "y":1420 },
+    { "name":"toroid", "type":"A", "x":70, "y":1430 },
+    { "name":"toroid", "type":"A", "x":90, "y":1440 },
+    { "name":"toroid", "type":"A", "x":110, "y":1450 },
+    { "name":"toroid", "type":"A", "x":130, "y":1460 },
+
+    { "name":"toroid", "type":"A", "x":130, "y":100 }
 ]
