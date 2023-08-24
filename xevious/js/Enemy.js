@@ -4,7 +4,7 @@
 Enemy = function( main, tableinfo ) {
     var game = main.game;
     // コンストラクタ
-    this.obj = game.add.sprite( tableinfo.x, tableinfo.y, tableinfo.name );
+    this.obj = game.add.sprite( tableinfo.x, tableinfo.y, tableinfo.spritename );
     main.group1.add(this.obj);
     this.obj.animations.add('run');
     this.obj.animations.play('run', 15, true);

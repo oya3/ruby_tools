@@ -32,7 +32,7 @@ NsXevious.prototype.preload = function() {
     
     // とりあえずのキャラ
     // game.load.image('player', 'assets/sprites/phaser-dude.png');
-    this.game.load.spritesheet('enemy', 'assets/sprites/baddie_cat_1.png',16, 16, 4 );
+    this.game.load.spritesheet('baddie_cat', 'assets/sprites/baddie_cat_1.png',16, 16, 4 );
     this.game.load.spritesheet('toroid', 'assets/sprites/toroid.png', 16, 16, 8 );
     
     // 自機
@@ -82,23 +82,6 @@ NsXevious.prototype.create = function() {
     this.player = new Player( this, this.game.world.width/2, this.game.world.height - 16, 'player' );
     this.charactermanager.addother( this.player );
     
-    // 無理くり敵を登録
-    // 追跡
-    for(i=0;i<50;i++){
-        enemyman = new Enemyman( this, this.game.world.width/2 - 100 + Math.random() * 200 - 8, this.game.world.height - 200, 'toroid', this.player );
-        this.charactermanager.addother( enemyman );
-    }
-    // サインカーブ
-    for(i=0;i<50;i++){
-        enemy = new EnemySinWave( this, this.game.world.width/2 - 100 + Math.random() * 200 - 8, this.game.world.height - 400 - (Math.random() * 100), 'toroid');
-        this.charactermanager.addother( enemy );
-    }
-    // ダッシュ
-    for(i=0;i<50;i++){
-        enemy = new EnemyDash( this, this.game.world.width/2 - 100 + Math.random() * 200 - 8, this.game.world.height - 400 - (Math.random() * 100), 'toroid', this.player );
-        this.charactermanager.addother( enemy );
-    }
-
     // レンダリング時のスケーリング
     this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     this.game.scale.setResizeCallback(this.gameResized, this);

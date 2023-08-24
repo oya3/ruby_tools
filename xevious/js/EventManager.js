@@ -8,8 +8,8 @@ EventManager = function( game ) {
 
 EventManager.prototype.setCharacter = function( manager, table ) {
     // キャラクター情報をセット
-    this.charactermanager = manager
-    this.charactertable = table
+    this.charactermanager = manager;
+    this.charactertable = table;
 };
 
 EventManager.prototype.update = function() {
