@@ -14,7 +14,7 @@ GEM
       pry (~> 0.11)
       yard (~> 0.9.11)
     qtbindings (4.8.6.5)
-    yard (0.9.34)
+    yard (0.9.35)
 
 PLATFORMS
   x86_64-linux
